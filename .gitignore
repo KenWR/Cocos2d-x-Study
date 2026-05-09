@@ -1,0 +1,16 @@
+# CMake and Visual Studio build output
+build/
+**/build/
+**/build-*/
+**/.vs/
+**/x64/
+**/Debug/
+**/Release/
+
+# Local editor and OS files
+.vs/
+.vscode/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini
