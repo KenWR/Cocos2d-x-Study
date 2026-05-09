@@ -121,7 +121,7 @@ endfunction()
  function(use_cocos2dx_compile_options target)
     if(MSVC)
         target_compile_options(${target}
-            PUBLIC /MP
+            PUBLIC /FS
         )
     endif()
  endfunction()
