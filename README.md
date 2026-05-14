@@ -24,7 +24,13 @@ Visual Studio 2022 C++ 도구와 CMake가 설치되어 있어야 합니다.
 
 ## 빌드 방법
 
-처음 빌드하거나 CMake 설정이 바뀐 경우 아래 명령을 사용합니다.
+저장소 루트에서 아래 스크립트를 실행합니다.
+
+```cmd
+build-win32.cmd
+```
+
+스크립트는 내부적으로 아래 CMake 명령을 실행합니다.
 
 ```cmd
 cd cocos2d-x\projects\PoopDodge
@@ -32,7 +38,7 @@ cmake -S . -B build-win32 -A Win32
 cmake --build build-win32 --config Debug
 ```
 
-이미 `build-win32` 폴더가 만들어진 뒤 C++ 코드만 수정했다면 마지막 빌드 명령만 다시 실행하면 됩니다.
+이미 `build-win32` 폴더가 만들어진 뒤 C++ 코드만 수정했다면 프로젝트 폴더에서 마지막 빌드 명령만 다시 실행해도 됩니다.
 
 ```cmd
 cmake --build build-win32 --config Debug
