@@ -27,6 +27,8 @@
 
 #include "cocos2d.h"
 
+#include <vector>
+
 class HelloWorld : public cocos2d::Scene
 {
 public:
@@ -34,11 +36,47 @@ public:
 
     virtual bool init();
     
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
+    void update(float delta) override;
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+
+private:
+    enum class GameState
+    {
+        Ready,
+        Playing,
+        Dead
+    };
+
+    void createBackground();
+    void createPlayer();
+    void createPoops();
+    cocos2d::DrawNode* createPoopNode();
+    void createLabels();
+    void setupKeyboard();
+    void startGame();
+    void endGame();
+    void resetPoop(cocos2d::DrawNode* poop, float yOffset = 0.0f);
+    void updatePlayer(float delta);
+    void updatePoops(float delta);
+    void updateScore(float delta);
+    int getActivePoopCount() const;
+    bool isColliding() const;
+
+    GameState _state = GameState::Ready;
+    cocos2d::DrawNode* _player = nullptr;
+    std::vector<cocos2d::DrawNode*> _poops;
+    cocos2d::Label* _titleLabel = nullptr;
+    cocos2d::Label* _guideLabel = nullptr;
+    cocos2d::Label* _scoreLabel = nullptr;
+    cocos2d::Label* _actionButtonLabel = nullptr;
+    cocos2d::Menu* _actionMenu = nullptr;
+    cocos2d::Size _visibleSize;
+    cocos2d::Vec2 _origin;
+    float _moveDirection = 0.0f;
+    float _score = 0.0f;
+    float _poopSpeed = 180.0f;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
